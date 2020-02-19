@@ -1,0 +1,28 @@
+Metadata-Version: 1.2
+Name: efb-mp-instanceview-middleware
+Version: 0.0.1
+Summary: WeChat Middleware of EH Forwarder Bot to enable instance        view for official accounts' articles
+Home-page: https://github.com/catbaron0/efb-mp-instance-middleware
+Author: catbaron
+Author-email: catbaron@live.cn
+License: AGPLv3+
+Description: # VoiceRecogMiddleware: A middleware for EFB 
+        
+        ## Notice
+        
+        **Middleware ID**: `catbaron.mp_instanceview`
+        
+        **VoiceRecogMiddleware** is a middleware of EFB enable instance view for articles of official accounts.
+        
+Keywords: ehforwarderbot,EH Forwarder Bot,EH Forwarder Bot Slave Channel,wechat,weixin,chatbot
+Platform: UNKNOWN
+Classifier: Development Status :: 3 - Alpha
+Classifier: License :: OSI Approved :: GNU Affero General Public License v3 or later (AGPLv3+)
+Classifier: Intended Audience :: Developers
+Classifier: Intended Audience :: End Users/Desktop
+Classifier: Programming Language :: Python :: 3 :: Only
+Classifier: Programming Language :: Python :: 3.6
+Classifier: Programming Language :: Python :: 3.7
+Classifier: Topic :: Communications :: Chat
+Classifier: Topic :: Utilities
+Requires-Python: >=3.6

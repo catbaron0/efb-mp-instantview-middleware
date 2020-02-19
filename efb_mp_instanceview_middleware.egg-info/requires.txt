@@ -1,0 +1,4 @@
+ehforwarderbot>=2.0.0
+PyYaml
+bs4
+urllib3
