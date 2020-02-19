@@ -6,6 +6,9 @@
 
 **MPInstanceViewMiddleware** is a middleware of EFB enable instance view for articles of official accounts.
 
+## How it works
+This middleware generates a telegraph page for links sent by official accounts of wechat, which will enable the instance view. Thus you need a `access_token` (introduced later).
+
 ## Dependense
 * Python >= 3.6
 * EFB >= 2.0.0
