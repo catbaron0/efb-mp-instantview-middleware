@@ -1,14 +1,11 @@
 # coding: utf-8
 import logging
-import threading
 from pathlib import Path
 from typing import Any, Dict, Optional
-from concurrent.futures import ThreadPoolExecutor
-import urllib
 
 import yaml
 
-from ehforwarderbot import coordinator, Middleware, Message, MsgType
+from ehforwarderbot import coordinator, Middleware, Message
 from ehforwarderbot.utils import get_config_path
 from . import __version__ as version
 from .telegraph import Telegraph
@@ -90,15 +87,8 @@ class MPInstanceViewMiddleware(Middleware):
                 page['author'],
                 page['content']
             )
-            title = message.attributes.title
-            desc = message.attributes.description
-            message.attributions = None
-            message.text = f"{title}\n{desc}\n{url}\n{mp_url}"
-            message.type = MsgType.Text
+            message.attributes.image = url
         except Exception:
             self.logger.info('Failed to process mp url!')
             return
         return message
-        # message.edit = True
-        # message.edit_media = False
-        # coordinator.send_message(message)
