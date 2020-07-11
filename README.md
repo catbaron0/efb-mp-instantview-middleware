@@ -44,7 +44,7 @@ You only need to add the last line to your config file.
 
 ### Configure the middleware
 
-The config file by default is `$HOME/.ehforwarderbot/profiles/default/catbaron.mp_instanceview`.
+The config file by default is `$HOME/.ehforwarderbot/profiles/default/catbaron.mp_instanceview/config.yaml`.
 Please create the config file if thers is not one. You need to have a telegraph token and save it here. You can get a token following [the document](https://telegra.ph/api#createAccount). The `access_token` is what you need.
 
 ```yaml
