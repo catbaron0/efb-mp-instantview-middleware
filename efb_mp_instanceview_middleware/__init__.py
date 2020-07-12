@@ -89,6 +89,5 @@ class MPInstanceViewMiddleware(Middleware):
             )
             message.attributes.image = url
         except Exception:
-            self.logger.info('Failed to process mp url!')
-            return
+            self.logger.debug('Failed to process mp url!')
         return message
