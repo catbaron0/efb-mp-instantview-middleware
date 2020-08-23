@@ -49,9 +49,7 @@ class Telegraph:
             'author_name': author,
             'content': content_str
         }
-        response = self.http.request(
-            'POST', self.publish_url, fields=fields
-        ).data.decode('utf-8')
+        response = self.http.request('POST', self.publish_url, fields=fields).data.decode('utf-8')
         response = json.loads(response)
         return response['result']['url']
 

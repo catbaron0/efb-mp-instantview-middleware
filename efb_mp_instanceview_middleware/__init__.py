@@ -2,6 +2,7 @@
 import logging
 from pathlib import Path
 from typing import Any, Dict, Optional
+import re
 
 import yaml
 
@@ -25,6 +26,7 @@ class MPInstanceViewMiddleware(Middleware):
     logger: logging.Logger = logging.getLogger(
         "plugins.%s.MPInstanceViewMiddleware" % middleware_id)
 
+    mp_pattern = re.compile('(https?:\/\/)?mp.weixin.qq.com\/.*')
     def __init__(self, instance_id: str = None):
         super().__init__()
         self.config: Dict[str: Any] = self.load_config()
@@ -64,10 +66,10 @@ class MPInstanceViewMiddleware(Middleware):
         """
         if message.deliver_to != coordinator.master:
             return message
-        if message.author.name == 'You':
-            return message
-        if not self.is_mp(message):
-            return message
+        # if message.author.name == 'You':
+        #     return message
+        # if not self.is_mp(message):
+        #     return message
         # threading.Thread(
         #     target=self.process_url,
         #     args=(message,),
@@ -79,6 +81,8 @@ class MPInstanceViewMiddleware(Middleware):
     def process_url(self, message: Message):
         try:
             mp_url = message.attributes.url
+            if not self.mp_pattern.match(mp_url):
+                return message
             page = self.telegraph.process_url(mp_url)
             url = self.telegraph.publish(
                 page['title'],
