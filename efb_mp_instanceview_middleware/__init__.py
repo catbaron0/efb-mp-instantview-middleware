@@ -91,6 +91,7 @@ class MPInstanceViewMiddleware(Middleware):
                 page['content']
             )
             message.attributes.image = url
-        except Exception:
+        except Exception as e:
             self.logger.debug('Failed to process mp url!')
+            self.logger.debug(e)
         return message
