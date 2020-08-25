@@ -1,13 +1,12 @@
 import json
-import certifi
-import urllib3
+import requests
 from typing import List, Dict
 from bs4 import BeautifulSoup as bs
 from bs4 import Tag, NavigableString
 
 
 class Telegraph:
-    def __init__(self, token):
+    def __init__(self, token, proxy):
         self.tags = {
             'a', 'aside', 'b', 'blockquote', 'br', 'code',
             'em', 'figcaption', 'figure', 'h3', 'h4', 'hr',
@@ -16,10 +15,18 @@ class Telegraph:
         }
         self.publish_url = 'https://api.telegra.ph/createPage'
         self.token = token
-        self.http = urllib3.PoolManager(
-            cert_reqs="CERT_REQUIRED",
-            ca_certs=certifi.where()
-        )
+        # self.http = urllib3.PoolManager(
+        #     cert_reqs="CERT_REQUIRED",
+        #     ca_certs=certifi.where()
+        # )
+        proxies = {
+            'http': proxy,
+            'https': proxy
+        }
+        self.publisher = requests.Session()
+        self.spider = requests.Session()
+        if proxy:
+            self.publisher.proxies = proxies
 
     def publish(self, title: str, author: str, content: List[Dict[str, str]]):
         '''
@@ -49,8 +56,9 @@ class Telegraph:
             'author_name': author,
             'content': content_str
         }
-        response = self.http.request('POST', self.publish_url, fields=fields).data.decode('utf-8')
-        response = json.loads(response)
+        # response = self.http.request('POST', self.publish_url, fields=fields).data.decode('utf-8')
+        # response = json.loads(response)
+        response = self.publisher.post(self.publish_url, data=fields).json()
         return response['result']['url']
 
     def tag2node(self, tag: Tag):
@@ -77,8 +85,8 @@ class Telegraph:
         '''
         Return author, title and content from a given url
         '''
-        res = self.http.request('GET', url)
-        soup = bs(res.data.decode('utf-8'), features="html.parser")
+        res = self.spider.get(url)
+        soup = bs(res.text, features="html.parser")
 
         try:
             title = soup.select('#activity-name')[0].text.strip()

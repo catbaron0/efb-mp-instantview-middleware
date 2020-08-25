@@ -31,7 +31,8 @@ class MPInstanceViewMiddleware(Middleware):
         super().__init__()
         self.config: Dict[str: Any] = self.load_config()
         token: str = self.config.get("telegraph_token")
-        self.telegraph = Telegraph(token)
+        proxy: str = self.config.get("proxy_url")
+        self.telegraph = Telegraph(token, proxy)
 
     def load_config(self) -> Optional[Dict]:
         config_path: Path = get_config_path(self.middleware_id)
