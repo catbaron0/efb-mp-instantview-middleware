@@ -58,6 +58,7 @@ class Telegraph:
         }
         # response = self.http.request('POST', self.publish_url, fields=fields).data.decode('utf-8')
         # response = json.loads(response)
+        print("Publisher.proxy", self.publisher.proxies)
         response = self.publisher.post(self.publish_url, data=fields).json()
         return response['result']['url']
 
@@ -85,6 +86,7 @@ class Telegraph:
         '''
         Return author, title and content from a given url
         '''
+        print("Spider.proxy", self.splider.proxies)
         res = self.spider.get(url)
         soup = bs(res.text, features="html.parser")
 
