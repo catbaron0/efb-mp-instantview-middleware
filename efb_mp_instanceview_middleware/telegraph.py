@@ -1,7 +1,7 @@
 import json
 import requests
-import urllib3
-import certifi
+# import urllib3
+# import certifi
 from typing import List, Dict
 from bs4 import BeautifulSoup as bs
 from bs4 import Tag, NavigableString
@@ -67,6 +67,12 @@ class Telegraph:
         tag_name = tag.name
         if tag_name == 'br' or tag_name == 'script':
             return ''
+        if tag_name == 'iframe':
+            node['tag'] = "a"
+            node['attrs'] = tag.attrs
+            node['attrs']['href'] = tag.attrs.get('data-src', tag.attrs.get('src', ''))
+            node['children'] = [node['attrs']['href']]
+            return node
         node['tag'] = tag_name if tag_name in self.tags else 'p'
         attrs = tag.attrs
         if 'display: none' in attrs.get('style', '') or \
@@ -117,6 +123,6 @@ class Telegraph:
 
 if __name__ == '__main__':
     ACCESS_TOKEN = ''
-    tg = Telegraph(ACCESS_TOKEN)
+    tg = Telegraph(ACCESS_TOKEN, '')
     page = tg.process_url('')
     print(tg.publish(page['title'], page['author'], page['content']))
