@@ -1,4 +1,4 @@
-# MPInstanceViewMiddleware: A middleware for EFB 
+# MPInstantViewMiddleware: A middleware for EFB 
 
 ## Notice
 
@@ -6,7 +6,7 @@
 
 The middleware ID was `catbaron.mp_instantview` before version 0.3.0. Please take care of it, especially please remeber to update the configure file of EFB (`$HOME/.ehforwarderbot/profiles/default/config.yaml`).
 
-**MPInstanceViewMiddleware** is a middleware of EFB enable instant view for articles of official accounts.
+**MPInstantViewMiddleware** is a middleware of EFB enable instant view for articles of official accounts.
 
 ## How it works
 This middleware generates a telegraph page for links sent by official accounts of wechat, which will enable the instant view. Thus you need a `access_token` (introduced later).
