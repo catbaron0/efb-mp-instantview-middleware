@@ -7,23 +7,23 @@ if sys.version_info < (3, 6):
     )
 
 __version__ = ""
-exec(open('efb_mp_instanceview_middleware/__version__.py').read())
+exec(open('efb_mp_instantview_middleware/__version__.py').read())
 
 long_description = open('README.md').read()
 
 setup(
-    name='efb-mp-instanceview-middleware',
+    name='efb-mp-instantview-middleware',
     packages=find_packages(
         exclude=["*.tests", "*.tests.*", "tests.*", "tests"]
     ),
     version=__version__,
-    description="WeChat Middleware of EH Forwarder Bot to enable instance\
+    description="WeChat Middleware of EH Forwarder Bot to enable instant\
         view for official accounts' articles",
     long_description=long_description,
     include_package_data=True,
     author='catbaron',
     author_email='catbaron@live.cn',
-    url='https://github.com/catbaron0/efb-mp-instance-middleware',
+    url='https://github.com/catbaron0/efb-mp-instant-middleware',
     license='AGPLv3+',
     python_requires='>=3.6',
     keywords=[
@@ -45,9 +45,9 @@ setup(
         "ehforwarderbot>=2.0.0",
         "PyYaml",
         "bs4",
-        "urllib3"
+        "requests[socks]"
     ],
     entry_points={
-        'ehforwarderbot.middleware': 'catbaron.mp_instanceview = efb_mp_instanceview_middleware:MPInstanceViewMiddleware'
+        'ehforwarderbot.middleware': 'catbaron.mp_instantview = efb_mp_instantview_middleware:MPInstantViewMiddleware'
     }
 )

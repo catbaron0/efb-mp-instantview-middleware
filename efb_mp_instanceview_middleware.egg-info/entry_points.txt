@@ -1,3 +1,0 @@
-[ehforwarderbot.middleware]
-catbaron.mp_instanceview = efb_mp_instanceview_middleware:MPInstanceViewMiddleware
-

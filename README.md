@@ -2,12 +2,14 @@
 
 ## Notice
 
-**Middleware ID**: `catbaron.mp_instanceview`
+**Middleware ID**: `catbaron.mp_instantview`
 
-**MPInstanceViewMiddleware** is a middleware of EFB enable instance view for articles of official accounts.
+The middleware ID was `catbaron.mp_instantview` before version 0.3.0. Please take care of it, especially please remeber to update the configure file of EFB (`$HOME/.ehforwarderbot/profiles/default/config.yaml`).
+
+**MPInstanceViewMiddleware** is a middleware of EFB enable instant view for articles of official accounts.
 
 ## How it works
-This middleware generates a telegraph page for links sent by official accounts of wechat, which will enable the instance view. Thus you need a `access_token` (introduced later).
+This middleware generates a telegraph page for links sent by official accounts of wechat, which will enable the instant view. Thus you need a `access_token` (introduced later).
 
 ## Dependense
 * Python >= 3.6
@@ -21,7 +23,7 @@ This middleware generates a telegraph page for links sent by official accounts o
 ### Install
 ```
 git clone https://github.com/catbaron0/efb-mp-instanceview-middleware
-cd efb-mp-instanceview-middleware
+cd efb-mp-instantview-middleware
 sudo python setup.py install
 ```
 
@@ -37,14 +39,14 @@ slave_channels:
 - bar.dummy
 middlewares:
 - foo.other_middlewares
-- catbaron.mp_instanceview
+- catbaron.mp_instantview
 ```
 
 You only need to add the last line to your config file.
 
 ### Configure the middleware
 
-The config file by default is `$HOME/.ehforwarderbot/profiles/default/catbaron.mp_instanceview/config.yaml`.
+The config file by default is `$HOME/.ehforwarderbot/profiles/default/catbaron.mp_instantview/config.yaml`.
 Please create the config file if there is not one. You need to have a telegraph token and save it here. You can get a token following [the document](https://telegra.ph/api#createAccount). The `access_token` is what you need.
 
 This middleware need access to https://telegra.ph, add the proxy url to the configure file if necessary.

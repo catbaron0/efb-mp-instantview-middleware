@@ -12,19 +12,19 @@ from . import __version__ as version
 from .telegraph import Telegraph
 
 
-class MPInstanceViewMiddleware(Middleware):
+class MPInstantViewMiddleware(Middleware):
     """
-    Middleware - MP InstanceView Middleware
+    Middleware - MP InstantView Middleware
     Convert Wechat Official Accounts' url to telegraph to enable
     instance viewl.
     Author: Catbaron <https://github.com/catbaron0>, 
     """
 
     middleware_id: str = "catbaron.mp_instanceview"
-    middleware_name: str = "MP InstanceView Middleware"
+    middleware_name: str = "MP InstantView Middleware"
     __version__ = version.__version__
     logger: logging.Logger = logging.getLogger(
-        "plugins.%s.MPInstanceViewMiddleware" % middleware_id)
+        "plugins.%s.MPInstantViewMiddleware" % middleware_id)
 
     mp_pattern = re.compile('(https?:\/\/)?mp.weixin.qq.com\/.*')
     def __init__(self, instance_id: str = None):
@@ -74,7 +74,7 @@ class MPInstanceViewMiddleware(Middleware):
         # threading.Thread(
         #     target=self.process_url,
         #     args=(message,),
-        #     name=f"MPInstanceView thread {message.uid}"
+        #     name=f"MPInstantView thread {message.uid}"
         #     ).start()
         message = self.process_url(message)
         return message
