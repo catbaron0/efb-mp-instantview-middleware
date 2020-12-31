@@ -9,7 +9,7 @@ if sys.version_info < (3, 6):
 __version__ = ""
 exec(open('efb_mp_instantview_middleware/__version__.py').read())
 
-long_description = open('README.rst').read()
+long_description = open('README.md').read()
 
 setup(
     name='efb-mp-instantview-middleware',
@@ -20,6 +20,7 @@ setup(
     description="WeChat Middleware of EH Forwarder Bot to enable instant\
         view for official accounts' articles",
     long_description=long_description,
+    long_description_content_type="text/markdown",
     include_package_data=True,
     author='catbaron',
     author_email='catbaron@live.cn',
