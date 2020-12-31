@@ -22,9 +22,9 @@ This middleware generates a telegraph page for links sent by official accounts o
 
 ### Install
 ```
-git clone https://github.com/catbaron0/efb-mp-instanceview-middleware
+git clone https://github.com/catbaron0/efb-mp-instantview-middleware
 cd efb-mp-instantview-middleware
-sudo python setup.py install
+pip install .
 ```
 
 ### Enable
