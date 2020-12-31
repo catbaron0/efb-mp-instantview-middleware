@@ -9,7 +9,7 @@ if sys.version_info < (3, 6):
 __version__ = ""
 exec(open('efb_mp_instantview_middleware/__version__.py').read())
 
-long_description = open('README.md').read()
+long_description = open('README.rst').read()
 
 setup(
     name='efb-mp-instantview-middleware',
